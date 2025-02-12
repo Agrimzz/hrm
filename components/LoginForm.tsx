@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { login } from "@/actions/auth"
 import { useRouter } from "next/navigation"
+import { IconLoader2 } from "@tabler/icons-react"
 
 const LoginForm = () => {
   const [error, setError] = useState<string | null>(null)
@@ -30,7 +31,6 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-      {error && <div className="text-red-500">{error}</div>}
       <div className="space-y-2">
         <label
           htmlFor="email"
@@ -63,12 +63,17 @@ const LoginForm = () => {
           required
         />
       </div>
+      {error && <div className="text-red-500">{error}</div>}
       <button
         disabled={pending}
         type="submit"
         className="w-full rounded-md bg-primary text-white p-2 text-lg hover:bg-primary/80"
       >
-        {pending ? "Logging in..." : "Login"}
+        {pending ? (
+          <IconLoader2 className="animate-spin mx-auto" size={28} />
+        ) : (
+          "Login"
+        )}
       </button>
     </form>
   )

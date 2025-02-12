@@ -16,7 +16,7 @@ export const login = async (
     email: formData.get("email") as string,
     password: formData.get("password") as string,
     role: "SUPER_ADMIN",
-    redirect: false, // Prevent automatic redirect
+    redirect: false,
   }
 
   try {
