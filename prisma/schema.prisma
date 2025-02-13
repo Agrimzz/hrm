@@ -26,10 +26,10 @@ manager User? @relation("ManagerEmployees", fields: [managerId], references: [id
 employees User[] @relation("ManagerEmployees")
 attendance Attendance[]
 leaveRequests LeaveRequest[]
-salary Salary?
+salary Float?
 
 accounts      Account[]
-  sessions      Session[]
+sessions      Session[]
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
 }
@@ -102,15 +102,15 @@ endDate DateTime
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
 }
-model Salary {
-id String @id @default(auto()) @map("_id") @db.ObjectId
-userId String @unique @db.ObjectId
-user User @relation(fields: [userId], references: [id])
-amount Float
-tax Float
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-}
+// model Salary {
+// id String @id @default(auto()) @map("_id") @db.ObjectId
+// userId String @unique @db.ObjectId
+// user User @relation(fields: [userId], references: [id])
+// amount Float
+// tax Float
+// createdAt DateTime @default(now())
+// updatedAt DateTime @updatedAt
+// }
 enum Role {
 SUPER_ADMIN
 HR

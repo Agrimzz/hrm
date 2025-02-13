@@ -1,6 +1,12 @@
+import { auth } from "@/auth"
 import LoginForm from "@/components/LoginForm"
+import { redirect } from "next/navigation"
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
+  if (session) {
+    redirect("/dashboard")
+  }
   return (
     <div className="w-full h-screen flex items-center justify-center bg-gradient-to-b from-background to-accent">
       <div className="max-w-4xl bg-backgroundLight rounded-[24] p-8 border border-gray-400">
