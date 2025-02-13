@@ -16,13 +16,13 @@ const Sidebar = ({
   const pathname = usePathname()
   const navlinks = roleNavlinks[role] || roleNavlinks["EMPLOYEE"]
   return (
-    <div className="w-[300px] h-full bg-accent/30 py-8 px-4 flex flex-col justify-between">
+    <div className="w-[300px] h-full bg-accent/30 py-8 px-4 hidden  md:flex flex-col justify-between">
       <div>
-        <div className="flex gap-1 items-center">
+        <Link href="/dashboard" className="flex gap-1 items-center">
           <IconLoadBalancer size={32} />
 
           <h1 className="text-2xl font-bold text-primary">HRM System</h1>
-        </div>
+        </Link>
 
         <div className="flex flex-col mt-16 gap-4">
           {navlinks.map((link) => (

@@ -6,3 +6,21 @@
 body {
   font-family: "Poppins", serif;
 }
+
+@layer utilities {
+  .form_label {
+    @apply block text-lg font-bold text-gray-600;
+  }
+
+  .form_input {
+    @apply w-full p-2 outline-none border border-gray-400 rounded-md;
+  }
+
+  .table_head {
+    @apply font-bold text-lg py-4 border-b border-primary text-left whitespace-nowrap;
+  }
+
+  .table_row {
+    @apply py-2 whitespace-nowrap;
+  }
+}
