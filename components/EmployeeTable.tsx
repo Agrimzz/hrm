@@ -1,7 +1,12 @@
 "use client"
 
 import { EmployeeData } from "@/types"
-import { IconLoader2, IconPencil, IconTrash } from "@tabler/icons-react"
+import {
+  IconFileDescription,
+  IconLoader2,
+  IconPencil,
+  IconTrash,
+} from "@tabler/icons-react"
 import axios from "axios"
 import Link from "next/link"
 import React, { useEffect, useState } from "react"
@@ -71,6 +76,9 @@ const EmployeeTable = ({ role }: { role: string }) => {
               <td className="py-4 whitespace-nowrap">
                 {showActions(employee.role) && (
                   <div className="flex gap-2 items-center justify-end">
+                    <Link href={`/employee/${employee.id}`}>
+                      <IconFileDescription color="blue" />
+                    </Link>
                     <Link href={`/employee/${employee.id}/edit`}>
                       <IconPencil color="green" />
                     </Link>
