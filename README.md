@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HRM App
 
-## Getting Started
+A full-stack Human Resource Management (HRM) application built with Next.js, Prisma, NextAuth, Tailwind CSS, and MongoDB. This app supports employee management, attendance tracking, leave requests, and role‑based authentication and authorization.
 
-First, run the development server:
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Development](#development)
+
+## Features
+
+- **Employee Management:**
+
+  - Create, read, update, and delete employee records.
+  - Manage employee details including name, email, role, employee type, department, and salary.
+
+- **Authentication & Authorization:**
+
+  - Secure authentication using NextAuth with credentials.
+  - Role-based access control (SUPER_ADMIN, HR, MANAGER, EMPLOYEE).
+
+- **Attendance Tracking:**
+
+  - Record employee check-ins and check-outs.
+  - Store additional metadata such as IP address and image URL.
+
+- **Leave Requests:**
+
+  - Employees can submit leave requests.
+  - Managers and HR can review, approve, or decline leave requests.
+  - Track leave status (REVIEW, APPROVED, DECLINED) and leave type (SICK, UNPAID, VACATION).
+
+- **Prisma & MongoDB:**
+
+  - Uses Prisma ORM to interact with a MongoDB database.
+  - Supports schema relations (e.g. User–Attendance, User–LeaveRequests).
+
+- **API Routes:**
+
+  - Built with Next.js App Router, offering API endpoints for employee CRUD operations, attendance, leave requests, etc.
+
+## Tech Stack
+
+- **Frontend:**
+
+  - Next.js (App Router)
+  - React
+  - Tailwind CSS
+
+- **Backend:**
+
+  - Next.js API Routes
+  - NextAuth for authentication
+  - Prisma ORM
+
+- **Database:**
+
+  - MongoDB
+
+## Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/Agrimzz/hrm.git
+   cd hrm
+   ```
+
+2. **Install Dependencies**
+
+   Use npm (or yarn/pnpm). If you run into peer dependency conflicts (especially with React versions), consider using `--legacy-peer-deps`:
+
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+3. **Generate Prisma Client**
+
+   Ensure that Prisma Client is generated after installing dependencies. This is especially important on Vercel where caching might cause outdated Prisma Clients. You can add a postinstall script in your package.json:
+
+   ```json
+   "scripts": {
+     "postinstall": "prisma generate",
+     "dev": "next dev",
+     "build": "next build"
+   }
+   ```
+
+   Or run manually:
+
+   ```bash
+   npx prisma generate
+   ```
+
+## Configuration
+
+1. **Prisma Schema**
+
+   The Prisma schema is located in `prisma/schema.prisma`. It defines your data models for User, Attendance, LeaveRequest, etc. Review and adjust the schema if needed.
+
+## Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Any changes you make will trigger a hot reload.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### API Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Employees:**
 
-## Learn More
+  - `GET /api/user` — fetch all employees.
+  - `POST /api/users/add` — add a new employee.
+  - `DELETE /api/user/[id]` — delete an employee (ensure your API route accepts an ID).
 
-To learn more about Next.js, take a look at the following resources:
+- **Attendance, Leave Requests, etc.:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - Additional endpoints are available under `/api/attendance`, `/api/leave-request`, etc.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+##
