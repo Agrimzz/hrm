@@ -55,7 +55,7 @@ const EmployeeTable = ({ role }: { role: string }) => {
   }
 
   return (
-    <table className="w-full border-collapse table-auto">
+    <table className="w-full border-collapse table-auto overflow-x-auto">
       <thead>
         <tr>
           <th className="table_head">Name</th>

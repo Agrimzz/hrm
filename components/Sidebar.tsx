@@ -1,5 +1,5 @@
 "use client"
-import { IconLoadBalancer } from "@tabler/icons-react"
+import { IconLoadBalancer, IconX } from "@tabler/icons-react"
 import Link from "next/link"
 import React from "react"
 import Logout from "./Logout"
@@ -9,21 +9,28 @@ import { roleNavlinks } from "@/constants"
 const Sidebar = ({
   name,
   role,
+  setActive,
 }: {
   name: string | null | undefined
   role: string
+  setActive?: (active: boolean) => void
 }) => {
   const pathname = usePathname()
   const navlinks = roleNavlinks[role] || roleNavlinks["EMPLOYEE"]
   return (
-    <div className="w-[300px] h-full bg-accent/30 py-8 px-4 hidden  md:flex flex-col justify-between">
+    <div className="min-w-[300px] h-full bg-accent/30 py-8 px-4 flex flex-col justify-between">
       <div>
-        <Link href="/dashboard" className="flex gap-1 items-center">
-          <IconLoadBalancer size={32} />
+        <div className="flex items-center justify-between">
+          <Link href="/dashboard" className="flex gap-1 items-center">
+            <IconLoadBalancer size={32} />
 
-          <h1 className="text-2xl font-bold text-primary">HRM System</h1>
-        </Link>
-
+            <h1 className="text-2xl font-bold text-primary">HRM System</h1>
+          </Link>
+          <IconX
+            className="block md:hidden "
+            onClick={() => setActive && setActive(false)}
+          />
+        </div>
         <div className="flex flex-col mt-16 gap-4">
           {navlinks.map((link) => (
             <Link

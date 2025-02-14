@@ -49,14 +49,14 @@ const LeaveTable = ({ role, userId }: LeaveTableProps) => {
   }
 
   return (
-    <table className="w-full border-collapse table-auto">
+    <table className="w-full overflow-x-hidden">
       <thead>
         <tr>
           <th className="table_head">Name</th>
           <th className="table_head">Leave Type</th>
           <th className="table_head">Subject</th>
           <th className="table_head">Start Date</th>
-          <th className="table_head">End Status</th>
+          <th className="table_head">End Date</th>
           <th className="table_head">Status</th>
         </tr>
       </thead>
@@ -64,18 +64,22 @@ const LeaveTable = ({ role, userId }: LeaveTableProps) => {
         {requests?.length > 0 ? (
           requests.map((request: LeaveData) => (
             <tr key={request.id} className="py-2 border-t border-primary">
-              <td className="py-4 whitespace-nowrap">{request.user.name}</td>
-              <td className="py-4 whitespace-nowrap">{request.type}</td>
-              <td className="py-4 whitespace-nowrap line-clamp-1">
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
+                {request.user.name}
+              </td>
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
+                {request.type}
+              </td>
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
                 {request.subject}
               </td>
-              <td className="py-4 whitespace-nowrap">
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
                 {new Date(request.startDate).toLocaleDateString()}
               </td>
-              <td className="py-4 whitespace-nowrap">
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
                 {new Date(request.endDate).toLocaleDateString()}
               </td>
-              <td className="py-4 whitespace-nowrap">
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
                 {" "}
                 <select
                   value={request.status}

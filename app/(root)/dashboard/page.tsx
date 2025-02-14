@@ -1,12 +1,18 @@
+import { auth } from "@/auth"
+import BurgerMenu from "@/components/BurgerMenu"
 import { IconDoorExit, IconUser, IconUsers } from "@tabler/icons-react"
 import React from "react"
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  const session = await auth()
   return (
     <div className="flex-1 p-8 ">
-      <div className="flex flex-col ">
-        <h2 className="text-3xl font-bold">Dashboard</h2>
-        <p className="text-gray-500">Welcome to your dashboard</p>
+      <div className="flex gap-2 items-start">
+        <BurgerMenu name={session?.user?.name} role={session?.user?.role} />
+        <div className="flex flex-col ">
+          <h2 className="text-3xl font-bold">Dashboard</h2>
+          <p className="text-gray-500">Welcome to your dashboard</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-2 mt-8 sm:grid-cols-3">

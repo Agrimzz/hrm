@@ -5,7 +5,7 @@ import React from "react"
 const Leave = async () => {
   const session = await auth()
   return (
-    <div className="min-w-[1100px]  bg-background border border-primary p-4 rounded-lg overflow-x-auto shrink-0">
+    <div className="w-full  bg-background border border-primary p-4 rounded-lg overflow-x-auto shrink-0">
       {(session?.user?.role === "EMPLOYEE" ||
         session?.user?.role === "MANAGER") && (
         <p className="text-primary text-lg font-semibold">

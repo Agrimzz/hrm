@@ -13,8 +13,10 @@ export default async function DashboardLayout({
   }
   return (
     <div className="w-full h-screen flex">
-      <Sidebar name={session?.user?.name} role={session?.user?.role} />
-      {children}
+      <div className="hidden md:block">
+        <Sidebar name={session?.user?.name} role={session?.user?.role} />
+      </div>
+      <div className="overflow-y-auto w-full">{children}</div>
     </div>
   )
 }

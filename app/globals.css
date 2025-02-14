@@ -17,10 +17,20 @@ body {
   }
 
   .table_head {
-    @apply font-bold text-lg py-4 border-b border-primary text-left whitespace-nowrap;
+    @apply font-bold  py-4 border-b border-primary text-left whitespace-nowrap text-sm md:text-lg;
   }
 
   .table_row {
     @apply py-2 whitespace-nowrap;
   }
+}
+
+.rbc-header {
+  background-color: #f4e8df;
+  color: #333537;
+}
+
+.rbc-event,
+.rbc-background-event {
+  background-color: #333537 !important;
 }
