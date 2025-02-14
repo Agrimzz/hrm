@@ -120,22 +120,23 @@ const EmployeeForm = ({ employee, action, role }: EmployeeFormProps) => {
             required
           />
         </div>
-        <div className="space-y-2">
-          <label htmlFor="password" className="form_label">
-            Password
-          </label>
-          <input
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Account Password"
-            className="form_input"
-            value={formData.password}
-            onChange={handleChange}
-            disabled={action === "edit"}
-            required
-          />
-        </div>
+        {action === "add" && (
+          <div className="space-y-2">
+            <label htmlFor="password" className="form_label">
+              Password
+            </label>
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="Account Password"
+              className="form_input"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        )}
         <div className="space-y-2">
           <label htmlFor="role" className="form_label">
             Role

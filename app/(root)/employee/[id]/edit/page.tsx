@@ -2,13 +2,14 @@
 import EmployeeForm from "@/components/EmployeeForm"
 import { EmployeeData } from "@/types"
 import axios from "axios"
+import { useSession } from "next-auth/react"
 import { useParams } from "next/navigation"
 import React, { useEffect, useState } from "react"
 
 const EmployeeEdit = () => {
   const params = useParams()
   const { id } = params
-
+  const { data: session } = useSession()
   const [employee, setEmployee] = useState<EmployeeData>()
 
   useEffect(() => {
@@ -23,7 +24,11 @@ const EmployeeEdit = () => {
   return (
     <div className="max-w-3xl mx-auto flex flex-col bg-background p-4 rounded-lg border border-primary">
       <h2 className="text-xl font-bold">Edit employee {employee?.name}</h2>
-      <EmployeeForm employee={employee} action="edit" />
+      <EmployeeForm
+        employee={employee}
+        action="edit"
+        role={session?.user?.role}
+      />
     </div>
   )
 }
