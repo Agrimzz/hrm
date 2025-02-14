@@ -4,11 +4,16 @@ A full-stack Human Resource Management (HRM) application built with Next.js, Pri
 
 ## Table of Contents
 
+- [Demo](#demo)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Development](#development)
+
+## demo
+
+Check out the live demo: [HRM System Demo](https://hrm-agrim-pradhanangas-projects.vercel.app)
 
 ## Features
 
