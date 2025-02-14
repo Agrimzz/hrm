@@ -18,3 +18,21 @@ export type EmployeeFormProps = {
   action: "edit" | "add"
   role?: string
 }
+
+export type LeaveData = {
+  id: string
+  type: string
+  subject: string
+  body: string
+  status: string
+  startDate: Date
+  endDate: Date
+  user: {
+    name: string
+  }
+}
+
+export type LeaveTableProps = {
+  role: string
+  userId: string
+}

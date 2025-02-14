@@ -1,10 +1,17 @@
+import { auth } from "@/auth"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 
 export default async function EmployeeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
+
+  if (session?.user.role !== "SUPER_ADMIN" && session?.user.role !== "HR") {
+    redirect("/dashboard")
+  }
   return (
     <div className="flex-1 p-8 ">
       <div className="flex flex-col sm:flex-row justify-between items-start">

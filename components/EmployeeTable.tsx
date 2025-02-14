@@ -38,7 +38,11 @@ const EmployeeTable = ({ role }: { role: string }) => {
 
   const showActions = (employeeRole: string) => {
     if (role === "SUPER_ADMIN") return true
-    if (role === "HR" && employeeRole === "EMPLOYEE") return true
+    if (
+      role === "HR" &&
+      (employeeRole === "EMPLOYEE" || employeeRole === "MANAGER")
+    )
+      return true
     return false
   }
 

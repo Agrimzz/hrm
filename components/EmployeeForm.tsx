@@ -147,7 +147,6 @@ const EmployeeForm = ({ employee, action, role }: EmployeeFormProps) => {
             value={formData.role}
             onChange={handleChange}
             required
-            disabled={role !== "SUPER_ADMIN"}
           >
             <option value="EMPLOYEE">Employee</option>
             {role === "SUPER_ADMIN" && <option value="HR">HR</option>}
