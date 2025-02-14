@@ -3,10 +3,10 @@ import bcrypt from "bcryptjs"
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
-    const { id } = params
+    const { id } = await params
     const deletedEmployee = await prisma.user.delete({
       where: { id },
     })
@@ -31,7 +31,7 @@ export const DELETE = async (
 
 export const GET = async (
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     const { id } = await params
@@ -59,7 +59,7 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     const { id } = await params

@@ -2,7 +2,7 @@ import { prisma } from "@/prisma"
 
 export const PATCH = async (
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   const { id } = await params
 

@@ -70,14 +70,22 @@ const EmployeeTable = ({ role }: { role: string }) => {
         {employees?.length > 0 ? (
           employees.map((employee: EmployeeData) => (
             <tr key={employee.id} className="py-2 border-t border-primary">
-              <td className="py-4 whitespace-nowrap">{employee.name}</td>
-              <td className="py-4 whitespace-nowrap">{employee.email}</td>
-              <td className="py-4 whitespace-nowrap">{employee.role}</td>
-              <td className="py-4 whitespace-nowrap">
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
+                {employee.name}
+              </td>
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
+                {employee.email}
+              </td>
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
+                {employee.role}
+              </td>
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
                 {employee.employeeType}
               </td>
-              <td className="py-4 whitespace-nowrap">Rs.{employee.salary}</td>
-              <td className="py-4 whitespace-nowrap">
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
+                Rs.{employee.salary}
+              </td>
+              <td className="py-4 whitespace-nowrap text-sm md:text-base">
                 {showActions(employee.role) && (
                   <div className="flex gap-2 items-center justify-end">
                     <Link href={`/employee/${employee.id}`}>
